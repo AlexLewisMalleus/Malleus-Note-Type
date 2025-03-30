@@ -1,159 +1,167 @@
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding: 10px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+/* === STYLING === */
+
+:root {
+  /* === Colours === */
+  --color-bg: #f9f9fb;                /* Light neutral background */
+  --color-surface: #ffffff;           /* Surfaces like cards and panels */
+  --color-text-primary: #1d1d1f;      /* Dark, high-contrast text */
+  --color-text-secondary: #3c3c4399;  /* Lighter grey for secondary text */
+  --color-accent: #007aff;            /* Blue for interactive elements */
+  --color-divider: #d1d1d6;           /* Subtle grey for dividers */
+
+  /* === Typography === */
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-size-base: 16px;
+  --font-size-title: 20px;
+  --font-size-caption: 13px;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+
+  /* === Spacing === */
+  --space-xs: 0.25rem;   /* 4px */
+  --space-sm: 0.5rem;    /* 8px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+
+  /* === Radius === */
+  --radius-sm: 0.5rem;   /* 8px - small buttons */
+  --radius-md: 1rem;     /* 16px - cards */
+  --radius-lg: 1.5rem;   /* 24px - modals, panels */
+
+  /* === Shadows === */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* === Borders === */
+  --border-light: 1px solid var(--color-divider);
+
+  /* === Translucent Backgrounds (Light Mode) === */
+  --bg-translucent-light: rgba(255, 255, 255, 0.3);
+  --bg-translucent-medium: rgba(255, 255, 255, 0.5);
+  --bg-translucent-heavy: rgba(255, 255, 255, 0.7);
+
+  /* === Blur Effects === */
+  --blur-small: blur(4px);
+  --blur-medium: blur(8px);
+  --blur-large: blur(16px);
 }
 
-.modal-content {
-	overflow-y:scroll;
-	margin: auto;
+.Nightmode,
+.night_mode {
+  /* === Colours === */
+  --color-bg: #1c1c1e;                 /* Base background (system background) */
+  --color-surface: #2c2c2e;            /* Cards and containers */
+  --color-text-primary: #f2f2f7;       /* High-contrast text (near white) */
+  --color-text-secondary: rgba(235, 235, 245, 0.6); /* Subdued text */
+  --color-accent: #0a84ff;             /* iOS dark mode blue */
+  --color-divider: rgba(84, 84, 88, 0.65); /* Subtle borders/dividers */
+
+  /* === Shadows === */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.75);
+
+  /* === Translucent Layers === */
+  --bg-translucent-light: rgba(44, 44, 46, 0.3);
+  --bg-translucent-medium: rgba(44, 44, 46, 0.5);
+  --bg-translucent-heavy: rgba(44, 44, 46, 0.7);
+
+  /* Optional ultra-dark blur effect (like modals or sheets) */
+  --bg-translucent-darker: rgba(28, 28, 30, 0.85);
+
+}
+
+
+
+body {
+	background: var(--color-surface);
+	/*background-image: url("https://150826569.v2.pressablecdn.com/downloads/macos-wallpapers-6k/15-Sequoia-Light-16x9.jpg");*/
+	color: var(--color-text-primary);
+	font-family: var(--font-system);
+	font-size: var(--font-size-base);
 	text-align: center;
-	max-width:95%;
-	max-height:95%;
 }
 
-#modal-image {
-	margin: auto;
-  display: inline-block;
-  width:100%;
-  height:100%;
+body .night_mode,
+body .NightModenn {
+	background-image: url("https://150826569.v2.pressablecdn.com/downloads/macos-wallpapers-6k/15-Sequoia-Dark-16x9.jpg");
 }
 
+ul {
+    list-style-type: "- ";
+    padding-left: 0.9em;
+    margin: 0;
+}
 
-/*USER CONFIGERABLE SETTINGS ------------------------------------------------------------*/ 
+img {
+	max-height: 100%;
+}
 
-	/*Colors Light Mode* --------------------------*/ 
-	.cloze {
-		color: #ffaa00 !important;
-		}a
-	
-		.cloze-inactive {
-			color: #00ffe7
-		}
-	
-		#Personal-Notes {
-			background-color: #4848AD;
-		}
-	
-		#Missed-Questions { 	
-			background-color: #bd5e28;
-		}
-	
-		#Extra {
-			background-color: #107E7D;
-		}
-
-	/*Colors Dark Mode-----------------------------*/
-
-	/* NM Cloze Color */
-	.nightMode .cloze,
-	.night_mode .cloze {
-	color: #ffaa00 !important;
-	}
-
-	.night_mode .cloze-inactive,
-	.nightMode .cloze-inactive {
-		color: #00ffe7
-	}
-
-	.night_mode #Personal-Notes,
-	.nightMode #Personal-Notes {
-		background-color: #4848AD;
-	}
-
-	.night_mode #Missed-Questions,
-	.nightMode #Missed-Questions { 	
-		background-color: #bd5e28;
-	}
-
-	.night_mode #Extra,
-	.nightMode #Extra {
-		background-color: #107E7D;
-
-	}
-
-	/*---------------------------------------------------------------------------------------*/
-
-	/* body does not include the extra resource content */
-	body {
-		margin: auto; /*align to center*/
-		padding:10px;
-		text-align: center;
-	}
-
-	#main {
+	#card {
 		margin: auto; /*align to center*/
 		max-width: 850px;
 	}
 
+
+	.cloze {
+		color: var(--color-accent);
+		font-weight: bold;
+		text-decoration: none; /*on ankidroid one-by-one clozes are made to be <a> elements, which by default are underlined*/
+		}
+
+/* === LAYOUT === */
+
+	.primary {
+		justify-content: center;
+		padding: var(--space-lg);
+		border-radius: var(--radius-md);
+		background: var(--bg-translucent-heavy);
+		backdrop-filter: var(--blur-large);
+		box-shadow: var(--shadow-card);
+		margin: var(--space-sm);
+		}
+
+	.secondary {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+		max-width: 1200px;
+		gap: var(--space-md);
+	  padding: var(--space-sm);
+	}
+
+	.secondary > div {
+		flex:  auto;
+		min-width: 250px; 
+		padding: var(--space-lg);	
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-card);
+		border: 0;
+		background: var(--bg-translucent-light);
+
+
+		backdrop-filter: var(--blur-small);
+	}
+
+	
 	#btns-1by1{
 		text-align: center;
 	}
 
 	#btns-1by1 > button {
 	outline: 0;
-	border-radius: 0.12em;
-	border: 1px solid #525253 !important;
-	padding: 5px 5px;
 	text-align: center;
 	display: inline-block;
-	font-size: 18px;
-	background-color: #424242;
-	color: #AFAFAF !important;
-	margin-top: 8px;
+	margin: var(--space-sm);
+	background: var(--bg-translucent-light);
+	padding: var(--space-sm);	
+	backdrop-filter: var(--blur-heavy);
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow-popover);
+	border: 0;
 	}
 
-	#clozecontainer{
-		display: flex;
-		justify-content: center;
-		margin-bottom: 0.5em;
-
-	}
-
-	.cloze {
-		font-weight: bold;
-		text-decoration: none; /*on ankidroid one-by-one clozes are made to be <a> elements, which by default are underlined*/
-	}
-
-	img {
-		max-height: 100%;
-	}
-
-	.container {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		flex-wrap: wrap;
-		width: 100%;
-		max-width: 1200px;
-	}
-
-	.element {
-		border-radius: 15px; /* Rounded corners */
-		padding: min(20px, 2%); /* Space inside the box */
-		margin: 8px; /* Center the box horizontally */
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
-			
-		flex: 1 1 auto;
-		min-width: 250px; 
-		
-	}
-
-	.element > h2{
-		margin-top: 0;
-		margin-bottom: 8px;
-		font-size: 15px;
-		text-decoration: underline;
-	}
 
 	#ExtraResourceContentContainer{
 		display: flex;
@@ -161,13 +169,6 @@
 		width: 100%;
 	}
 
-
-
-	html {
-
-		font-size: 28px;
-		font-family: Arial;
-	}
 
 
 
